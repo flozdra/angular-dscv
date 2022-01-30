@@ -1,0 +1,35 @@
+<app-dialog [(dialog)]="dialog">
+
+  <div class="bg-white p-4">
+    <div class="flex text-2xl font-medium pb-3">
+      Contact us
+    </div>
+
+    <form [formGroup]="contactForm" class="flex flex-col mt-0 text-left text-sm gap-3 mt-4" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="email-address" class="text-xs block mb-1">Email address</label>
+        <input id="email-address" name="email" type="email" autocomplete="email" required
+               class="rounded w-full px-2.5 pt-1.5 pb-2 border border-gray-300" placeholder="you@example.com"
+               formControlName="email">
+      </div>
+      <div>
+        <label for="message" class="text-xs block mb-1">Your message</label>
+        <textarea id="message" name="email" rows="3" required
+                  class="rounded w-full px-2.5 pt-1.5 pb-2 border border-gray-300"
+                  placeholder="What do you want to tell us?"
+                  formControlName="message"></textarea>
+      </div>
+
+      <div class="flex justify-end mt-4">
+        <app-p-btn [text]="'Close'" (click)="dialogChange.emit(false)"></app-p-btn>
+        <button
+          class="transition duration-200 ease-in-out active:bg-gray-500
+                hover:bg-gray-600 rounded-md border border-gray-300 shadow-sm
+                px-4 py-2 bg-gray-800 font-medium text-white ml-3 text-sm flex"
+          type="submit">
+          Send
+        </button>
+      </div>
+    </form>
+  </div>
+</app-dialog>

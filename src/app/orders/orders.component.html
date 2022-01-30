@@ -1,0 +1,125 @@
+<div>
+  <h1 class="text-3xl font-bold">Users</h1>
+  <div class="grid grid-cols-1 pt-6 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+    <div *ngFor="let order of orders"
+         class="flex bg-white
+       cursor-pointer select-none
+       rounded-3xl transition
+       transition duration-200
+       hover:shadow-lg
+       active:bg-gray-100"
+         (click)="openDialog(order)"
+    >
+      <div class="flex-grow flex flex-col content-end p-4 px-5">
+        <div class="text-xl font-semibold">
+          {{ 'Order #' + order.id }}
+        </div>
+        <div class="text-xs font-medium text-gray-500">
+          {{ 'by  ' + order.user.name }}
+        </div>
+        <div class="text-sm flex align-bottom mt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-0.5 mr-1" fill="none" viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span>
+          {{ order.products.length + ' items' }}
+          </span>
+        </div>
+        <div class="text-sm flex align-bottom mt-1">
+          <span>
+          {{ getTotalOrder(order) }}
+          </span>
+        </div>
+      </div>
+      <div class="h-14 w-14 m-4">
+        <img [src]="order.user.img" alt=""
+             class="object-contain rounded-2xl"/>
+      </div>
+    </div>
+
+    <app-dialog [(dialog)]="dialog">
+      <div *ngIf="selection" class="bg-white p-4 divide-y">
+        <div class="flex text-2xl font-medium pb-3">
+          {{ 'Order #' + selection.id }}
+        </div>
+
+        <div class="flex py-4">
+          <div class="flex-grow mt-0 text-left">
+            <h3 class="text-lg font-medium text-gray-900" id="modal-title">
+              {{ 'by ' + selection.user.name }}
+            </h3>
+            <div>
+              <p class="text-xs text-gray-500">
+                {{ '@' + selection.user.username }}
+              </p>
+            </div>
+
+            <div class="text-xs flex align-bottom mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-0.5" fill="none" viewBox="0 0 24 24"
+                   stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>
+              {{ selection.user.location }}
+          </span>
+            </div>
+          </div>
+          <div
+            class="flex mx-auto items-center justify-center h-20 w-20">
+            <img [src]="selection.user.img" alt=""
+                 class="object-contain rounded-lg"/>
+          </div>
+        </div>
+
+        <div *ngFor="let product of selection.products"
+             class="py-4 bg-white">
+          <div class="flex items-start">
+            <div
+              class="flex justify-center h-20 w-20 bg-gray-200 rounded-2xl">
+              <img [src]="product.img" alt=""
+                   class="object-contain"/>
+            </div>
+            <div class="flex flex-col flex-grow mt-0 ml-4 text-left self-stretch">
+              <h3 class="font-bold font-medium text-gray-900">
+                {{ product.name }}
+              </h3>
+              <div>
+                <p class="text-xs text-gray-500">
+                  {{ product.range }}
+                </p>
+                <p class="text-xs text-gray-700">
+                  {{ product.description }}
+                </p>
+              </div>
+              <div class="flex flex-row-reverse flex-grow items-end">
+                <p class="text-right font-medium text-gray-500">{{ formatPrice(product.price) }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+
+          <div class="flex justify-between font-medium text-lg py-4">
+            <div>Order total</div>
+            <div>{{ getTotalOrder(selection) }}</div>
+          </div>
+          <div class="sm:flex sm:flex-row-reverse sm:flex-grow items-end mt-3">
+            <app-p-btn [text]="'Close'" (click)="dialog = false"></app-p-btn>
+          </div>
+        </div>
+
+
+      </div>
+
+    </app-dialog>
+
+  </div>
+
+</div>

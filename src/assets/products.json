@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "MX Master 3",
+    "description": "Souris sans fil avancée",
+    "range": "Série Master",
+    "price": 109.99 ,
+    "img": "https://resource.logitech.com/w_419,ar_1.0,c_limit,f_auto,q_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/mice/mx-master-3/gallery/mx-master-product-gallery-graphite-top.png?v=1"
+  },
+  {
+    "id": 2,
+    "name": "M330 Silent Plus",
+    "description": "Plus de confort et de précision avec SilentTouch",
+    "range": "",
+    "price": 39.99 ,
+    "img":  "https://resource.logitech.com/w_419,ar_1.0,c_limit,f_auto,q_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/mice/m330-wireless-silent-mouse/gallery/m330-black-gallery-1.png?v=1"
+  },
+  {
+    "id": 3,
+    "name": "MX Ergo",
+    "description": "Trackball sans fil avancée",
+    "range": "Série Master",
+    "price": 99.99 ,
+    "img": "https://resource.logitech.com/w_419,ar_1.0,c_limit,f_auto,q_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/mice/mx-ergo/gallery/mx-ergo-gallery-01.png?v=1"
+  },
+  {
+    "id": 4,
+    "name": "M535",
+    "description": "Souris Bluetooth®",
+    "range": "",
+    "price": 49.99 ,
+    "img": "https://resource.logitech.com/w_419,ar_1.0,c_limit,f_auto,q_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/mice/m535/gallery/m535-gallery-blue-01-new.png?v=1"
+  }
+]
